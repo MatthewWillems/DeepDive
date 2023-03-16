@@ -1,1 +1,9 @@
+// Abstracts
 @use "./abstracts/reset";
+@use "./abstracts/colors";
+@use "./abstracts/mediaqueries";
+@use "./abstracts/reset";
+
+// Components
+@use "./components/header/header.scss";
+@use "./components/months/months.scss";

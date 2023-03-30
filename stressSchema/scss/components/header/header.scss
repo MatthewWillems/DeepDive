@@ -1,0 +1,28 @@
+.header{
+    height: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0,0.8);
+   
+
+    &__text{
+      color: #2DB7B3;
+      font-weight: 200;
+      padding: 2rem;
+   
+
+    }
+
+    &__figure{
+        width: 10rem;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+    }
+    &__doesburg{
+        height: 8rem;
+       
+    }
+}

@@ -1,0 +1,65 @@
+main{
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6rem;
+  
+}
+
+.cards{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    &__card{
+        height: 20rem;
+        aspect-ratio: 1/1;
+         background: red;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         border-radius: 1rem;
+
+         &--groen{
+            background: rgba(0, 255, 17,0.6);
+         }
+         &--geel{
+            background: rgba(255, 255, 0,0.6);
+         }
+         &--oranje{
+            background: rgba(249, 182, 4,0.6);
+         }
+         &--rood{
+            background: rgba(251, 7, 7,0.6);
+         }
+         
+    }
+
+    &__circle{
+        height: 10rem;
+        aspect-ratio: 1/1;
+        background: green;
+        border: 0.2rem solid white;
+        border-radius: 50%;
+
+        &--groen{
+            background: rgba(0, 255, 17,);
+        }
+        &--geel{
+            background: rgba(255, 255, 0,);
+        }
+        &--oranje{
+            background: rgba(249, 182, 4,);
+        }
+        &--rood{
+            background: rgba(251, 7, 7,0.6);
+        }
+    }
+    
+    &:hover{
+        cursor: pointer;
+      
+    }
+}

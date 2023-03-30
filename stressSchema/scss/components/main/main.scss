@@ -1,4 +1,4 @@
-main{
+.main{
     height: 80vh;
     display: flex;
     align-items: center;
@@ -12,6 +12,7 @@ main{
     align-items: center;
     justify-content: center;
     flex-direction: column;
+
 
     &__card{
         height: 20rem;
@@ -56,10 +57,15 @@ main{
         &--rood{
             background: rgba(251, 7, 7,0.6);
         }
+
+        
     }
     
     &:hover{
         cursor: pointer;
-      
+       
+        transform: scale(1.1);
+        transition: 0.2s all;
     }
 }
+

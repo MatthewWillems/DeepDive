@@ -1,0 +1,26 @@
+@media screen and (max-width: 62.5rem) {
+
+    .main{
+        display: block;
+        padding-top: 1rem;
+      
+    }
+
+    .cards{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      margin-top: 1rem;
+      
+    &__card{
+        height: 10rem;
+        aspect-ratio: 1/1;
+       
+    }
+    &__circle{
+        height: 5rem;
+        aspect-ratio: 1/1;
+      
+    }
+}}

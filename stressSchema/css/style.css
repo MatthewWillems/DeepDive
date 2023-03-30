@@ -14,7 +14,7 @@ html {
   font-size: 62.5%;
 }
 
-main {
+.main {
   height: 80vh;
   display: flex;
   align-items: center;
@@ -70,6 +70,8 @@ main {
 }
 .cards:hover {
   cursor: pointer;
+  transform: scale(1.1);
+  transition: 0.2s all;
 }
 
 .header {
@@ -93,6 +95,46 @@ main {
 }
 .header__doesburg {
   height: 8rem;
+}
+
+.footer {
+  height: 30vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.input {
+  height: 10rem;
+  width: 80%;
+}
+.input__input {
+  width: 100%;
+  padding: 2rem;
+}
+
+@media screen and (max-width: 62.5rem) {
+  .main {
+    display: block;
+    padding-top: 1rem;
+  }
+  .cards {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 1rem;
+  }
+  .cards__card {
+    height: 10rem;
+    aspect-ratio: 1/1;
+  }
+  .cards__circle {
+    height: 5rem;
+    aspect-ratio: 1/1;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

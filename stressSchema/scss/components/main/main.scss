@@ -1,10 +1,17 @@
 .main{
-    height: 80vh;
+    height: 85vh;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 6rem;
   
+}
+
+.Scroll__Link{
+    transition: 0.2s;
+    text-decoration: none;
+    color: black;
+
 }
 
 .cards{
@@ -60,6 +67,7 @@
 
         
     }
+
     
     &:hover{
         cursor: pointer;

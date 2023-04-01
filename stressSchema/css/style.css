@@ -12,14 +12,21 @@ body {
 
 html {
   font-size: 62.5%;
+  scroll-behavior: smooth;
 }
 
 .main {
-  height: 80vh;
+  height: 85vh;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 6rem;
+}
+
+.Scroll__Link {
+  transition: 0.2s;
+  text-decoration: none;
+  color: black;
 }
 
 .cards {
@@ -98,21 +105,33 @@ html {
 }
 
 .footer {
-  height: 30vh;
+  display: none;
+}
+.footer__Area {
+  height: 100vh;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  vertical-align: top;
+}
+.footer__text {
+  padding: 1rem;
+  color: #2DB7B3;
 }
 
 .input {
-  height: 10rem;
+  height: 15rem;
   width: 80%;
+  background: red;
 }
-.input__input {
+.input__textarea {
   width: 100%;
+  height: 100%;
   padding: 2rem;
+  text-align: center;
+  border: 0.2rem solid #2DB7B3;
 }
 
 @media screen and (max-width: 62.5rem) {

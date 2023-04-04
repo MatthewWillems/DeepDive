@@ -20,8 +20,14 @@ cards.forEach(card => {
     cards.forEach(otherCard => {
       if (otherCard !== card) {
         otherCard.style.display = "none";
+       
+
+
       }
     });
+
+    const main = document.getElementById('js--main');
+    main.style.gap = '0';
 
     // Show the footer
     const footer = document.getElementById("js--footer");

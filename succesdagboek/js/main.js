@@ -30,7 +30,7 @@ class Calendar {
   
     createMonthContainer() {
       const monthContainer = document.createElement("div");
-      monthContainer.classList.add("month-container");
+      monthContainer.classList.add("month__container");
       return monthContainer;
     }
   

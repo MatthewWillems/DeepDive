@@ -5,22 +5,22 @@
     flex-wrap: wrap;
     width: 100%;
     gap: 2.5rem;
+
+    .day {
+      width: 6rem;
+      height: 6rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0.5rem;
+      border-radius: 50%;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 1.8rem;
+      border: 0.2rem solid white;
+      color: white;
+    }
   }
   
-  .day {
-    width: 6rem;
-    height: 6rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0.5rem;
-    border-radius: 50%;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1.8rem;
-    border: 0.2rem solid white;
-    color: white;
-  }
-
   .day:hover{
     cursor: pointer;
     background: #ffffff;

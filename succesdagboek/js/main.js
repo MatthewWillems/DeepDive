@@ -4,11 +4,13 @@ class Calendar {
     this.calendar = document.querySelector(calendarSelector);
     this.selectedDate = null;
     this.formWrapper = document.querySelector(".forms__wrapper");
+    this.formDate = document.querySelector(".form__date");
   }
 
   init() {
     this.formWrapper.style.display = "none";
-    
+    this.formDate.textContent = ""; // Clear form__date content
+
     this.months.forEach((month) => {
       month.addEventListener("click", () => {
         const monthId = parseInt(month.dataset.month);
@@ -29,7 +31,7 @@ class Calendar {
         this.calendar.innerHTML = "";
         this.calendar.appendChild(monthContainer);
 
-        const days = document.querySelectorAll(".day");
+        const days = monthContainer.querySelectorAll(".day"); // Query only within monthContainer
         days.forEach((day) => {
           day.addEventListener("click", () => {
             this.selectedDate = new Date(2023, monthId, parseInt(day.textContent));
@@ -37,7 +39,8 @@ class Calendar {
             this.months.forEach((month) => {
               month.style.display = "none";
             });
-            
+
+            this.formDate.textContent = `${day.textContent} ${monthName} 2023`; // Update form__date content
             this.formWrapper.style.display = "block";
           });
         });
@@ -46,29 +49,29 @@ class Calendar {
   }
 
   createMonthContainer() {
-      const monthContainer = document.createElement("div");
-      monthContainer.classList.add("month__container");
-      return monthContainer;
+    const monthContainer = document.createElement("div");
+    monthContainer.classList.add("month__container");
+    return monthContainer;
   }
 
   createMonthHeader(monthName) {
-      const monthHeader = document.createElement("h2");
-      monthHeader.classList.add("month__h2");
-      monthHeader.textContent = monthName;
-      return monthHeader;
+    const monthHeader = document.createElement("h2");
+    monthHeader.classList.add("month__h2");
+    monthHeader.textContent = monthName;
+    return monthHeader;
   }
 
   createDaysContainer() {
-      const daysContainer = document.createElement("div");
-      daysContainer.classList.add("days");
-      return daysContainer;
+    const daysContainer = document.createElement("div");
+    daysContainer.classList.add("days");
+    return daysContainer;
   }
 
   createDay(dayNumber) {
-      const day = document.createElement("div");
-      day.classList.add("day");
-      day.textContent = dayNumber;
-      return day;
+    const day = document.createElement("div");
+    day.classList.add("day");
+    day.textContent = dayNumber;
+    return day;
   }
 }
 

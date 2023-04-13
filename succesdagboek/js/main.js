@@ -49,7 +49,7 @@ class Calendar {
     });
 
     this.addButton.addEventListener("click", () => {
-      const textarea = this.createTextarea(); // Create a new textarea
+      const textarea = this.createTextarea(); // Create textarea with custom class
       this.formWrapper.appendChild(textarea);
     });
   }
@@ -83,6 +83,12 @@ class Calendar {
   createTextarea() {
     const textarea = document.createElement("textarea");
     textarea.classList.add("form__textArea"); // Add a custom class for the new textarea
+
+    // Set the textarea as a flex item and center it vertically and horizontally
+    textarea.style.display = "flex";
+    textarea.style.alignItems = "center";
+    textarea.style.justifyContent = "center";
+
     return textarea;
   }
 }

@@ -127,11 +127,11 @@ main .month__container {
 }
 
 .newTextarea {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100px;
+  position: absolute; /* Set position to absolute */
+  top: 0; /* Position from top of parent element */
+  left: 0; /* Position from left of parent element */
+  width: 100%; /* Set width to 100% to fill parent element */
+  height: 10rem; /* Update height as needed */
   resize: none;
 }
 

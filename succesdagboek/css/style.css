@@ -121,12 +121,18 @@ main .month__container {
 }
 
 .forms__wrapper {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative; /* Update to relative positioning */
   text-align: center;
   padding: 2rem;
+}
+
+.newTextarea {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  resize: none;
 }
 
 .form__textArea {
@@ -134,6 +140,7 @@ main .month__container {
   height: 15rem;
   padding: 1.5rem;
   border: 0.2rem solid #28c0c3;
+  resize: none;
 }
 
 .form__date {

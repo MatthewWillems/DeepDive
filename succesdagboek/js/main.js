@@ -5,6 +5,7 @@ class Calendar {
     this.selectedDate = null;
     this.formWrapper = document.querySelector(".forms__wrapper");
     this.formDate = document.querySelector(".form__date");
+    this.addButton = document.querySelector(".addButton");
   }
 
   init() {
@@ -46,6 +47,11 @@ class Calendar {
         });
       });
     });
+
+    this.addButton.addEventListener("click", () => {
+      const textarea = this.createTextarea(); // Create a new textarea
+      this.formWrapper.appendChild(textarea);
+    });
   }
 
   createMonthContainer() {
@@ -72,6 +78,12 @@ class Calendar {
     day.classList.add("day");
     day.textContent = dayNumber;
     return day;
+  }
+
+  createTextarea() {
+    const textarea = document.createElement("textarea");
+    textarea.classList.add("form__textArea"); // Add a custom class for the new textarea
+    return textarea;
   }
 }
 

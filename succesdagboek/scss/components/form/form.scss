@@ -1,0 +1,24 @@
+.forms__wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .form__textArea {
+    width: 30rem;
+    height: 10rem;
+    padding: 1.5rem;
+  }
+  
+  .form__date {
+    font-size: 4rem;
+  }
+  
+  .form__title {
+    font-size: 3rem;
+    padding: 2rem;
+  }
+  

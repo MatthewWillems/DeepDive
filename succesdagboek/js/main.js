@@ -1,60 +1,76 @@
 class Calendar {
-    constructor(monthsSelector, calendarSelector) {
-      this.months = document.querySelectorAll(monthsSelector);
-      this.calendar = document.querySelector(calendarSelector);
-    }
-  
-    init() {
-      this.months.forEach((month) => {
-        month.addEventListener("click", () => {
-          const monthId = parseInt(month.dataset.month);
-          const monthName = month.textContent;
-  
-          const monthContainer = this.createMonthContainer();
-          const monthHeader = this.createMonthHeader(monthName);
-          const daysContainer = this.createDaysContainer();
-          const daysInMonth = new Date(2023, monthId + 1, 0).getDate();
-  
-          for (let i = 1; i <= daysInMonth; i++) {
-            const day = this.createDay(i);
-            daysContainer.appendChild(day);
-          }
-  
-          monthContainer.appendChild(monthHeader);
-          monthContainer.appendChild(daysContainer);
-          this.calendar.innerHTML = "";
-          this.calendar.appendChild(monthContainer);
+  constructor(monthsSelector, calendarSelector) {
+    this.months = document.querySelectorAll(monthsSelector);
+    this.calendar = document.querySelector(calendarSelector);
+    this.selectedDate = null;
+    this.formWrapper = document.querySelector(".forms__wrapper");
+  }
+
+  init() {
+    this.formWrapper.style.display = "none";
+    
+    this.months.forEach((month) => {
+      month.addEventListener("click", () => {
+        const monthId = parseInt(month.dataset.month);
+        const monthName = month.textContent;
+
+        const monthContainer = this.createMonthContainer();
+        const monthHeader = this.createMonthHeader(monthName);
+        const daysContainer = this.createDaysContainer();
+        const daysInMonth = new Date(2023, monthId + 1, 0).getDate();
+
+        for (let i = 1; i <= daysInMonth; i++) {
+          const day = this.createDay(i);
+          daysContainer.appendChild(day);
+        }
+
+        monthContainer.appendChild(monthHeader);
+        monthContainer.appendChild(daysContainer);
+        this.calendar.innerHTML = "";
+        this.calendar.appendChild(monthContainer);
+
+        const days = document.querySelectorAll(".day");
+        days.forEach((day) => {
+          day.addEventListener("click", () => {
+            this.selectedDate = new Date(2023, monthId, parseInt(day.textContent));
+            this.calendar.style.display = "none";
+            this.months.forEach((month) => {
+              month.style.display = "none";
+            });
+            
+            this.formWrapper.style.display = "block";
+          });
         });
       });
-    }
-  
-    createMonthContainer() {
+    });
+  }
+
+  createMonthContainer() {
       const monthContainer = document.createElement("div");
       monthContainer.classList.add("month__container");
       return monthContainer;
-    }
-  
-    createMonthHeader(monthName) {
+  }
+
+  createMonthHeader(monthName) {
       const monthHeader = document.createElement("h2");
       monthHeader.classList.add("month__h2");
       monthHeader.textContent = monthName;
       return monthHeader;
-    }
-  
-    createDaysContainer() {
+  }
+
+  createDaysContainer() {
       const daysContainer = document.createElement("div");
       daysContainer.classList.add("days");
       return daysContainer;
-    }
-  
-    createDay(dayNumber) {
+  }
+
+  createDay(dayNumber) {
       const day = document.createElement("div");
       day.classList.add("day");
       day.textContent = dayNumber;
       return day;
-    }
   }
-  
-  const calendar = new Calendar(".month", ".calendar");
-  calendar.init();
-  
+}
+
+const calendar = new Calendar(".month", ".calendar");
+calendar.init();

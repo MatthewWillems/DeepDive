@@ -5,12 +5,22 @@ class Calendar {
     this.selectedDate = null;
     this.formWrapper = document.querySelector(".forms__wrapper");
     this.formDate = document.querySelector(".form__date");
-    this.addButton = document.querySelector(".addButton");
+    this.saveButton = document.querySelector(".saveButton");
+    this.returnButton = document.querySelector(".returnButton"); // Select the returnButton element
   }
 
   init() {
     this.formWrapper.style.display = "none";
     this.formDate.textContent = ""; // Clear form__date content
+
+    // Add a click event listener to the returnButton
+    this.returnButton.addEventListener("click", () => {
+      this.formWrapper.style.display = "none";
+      this.calendar.style.display = "block";
+      this.months.forEach((month) => {
+        month.style.display = "block";
+      });
+    });
 
     this.months.forEach((month) => {
       month.addEventListener("click", () => {
@@ -43,14 +53,23 @@ class Calendar {
 
             this.formDate.textContent = `${day.textContent} ${monthName} 2023`; // Update form__date content
             this.formWrapper.style.display = "block";
+            const success = localStorage.getItem(this.selectedDate.toDateString());
+            const textarea = this.formWrapper.querySelector(".form__textArea");
+            textarea.value = success || "";
           });
         });
       });
     });
 
-    this.addButton.addEventListener("click", () => {
-      const textarea = this.createTextarea(); // Create textarea with custom class
-      this.formWrapper.appendChild(textarea);
+    this.saveButton.addEventListener("click", () => {
+      const textarea = this.formWrapper.querySelector(".form__textArea");
+      const success = textarea.value.trim();
+      if (success !== "") {
+        localStorage.setItem(this.selectedDate.toDateString(), success);
+        alert("Success saved!");
+      } else {
+        alert("Please enter a success.");
+      }
     });
   }
 
@@ -78,18 +97,6 @@ class Calendar {
     day.classList.add("day");
     day.textContent = dayNumber;
     return day;
-  }
-
-  createTextarea() {
-    const textarea = document.createElement("textarea");
-    textarea.classList.add("form__textArea"); // Add a custom class for the new textarea
-
-    // Set the textarea as a flex item and center it vertically and horizontally
-    textarea.style.display = "flex";
-    textarea.style.alignItems = "center";
-    textarea.style.justifyContent = "center";
-
-    return textarea;
   }
 }
 

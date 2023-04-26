@@ -50,6 +50,13 @@ main .months__wrapper {
   width: 60rem;
   padding: 1rem;
 }
+main .month {
+  padding: 1.3rem;
+  font-size: 2rem;
+  font-family: "Open Sans", sans-serif;
+  border-bottom: 0.1rem solid rgba(128, 128, 128, 0.286);
+  color: #1E1E1E;
+}
 main .month:hover {
   transition: cubic-bezier(0.215, 0.61, 0.355, 1);
   background: radial-gradient(circle farthest-corner at 10% 20%, rgb(0, 152, 155) 0.1%, rgb(153, 187, 196) 94.2%);
@@ -67,23 +74,14 @@ main .calendar {
   margin: auto;
   box-shadow: rgba(0, 0, 0, 0.19) 0rem 0.1rem 0.2rem, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
-main .month__container {
+main .calendar .month__container {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 1rem;
   flex-direction: column;
 }
-
-.month {
-  padding: 1.3rem;
-  font-size: 2rem;
-  font-family: "Open Sans", sans-serif;
-  border-bottom: 0.1rem solid rgba(128, 128, 128, 0.286);
-  color: #1E1E1E;
-}
-
-.month__h2 {
+main .month__h2 {
   font-size: 2rem;
   font-family: "Open Sans", sans-serif;
   padding: 1.8rem;
@@ -124,10 +122,11 @@ main .month__container {
   position: relative;
   text-align: center;
   padding: 2rem;
-  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
-.newTextarea {
+.forms__wrapper .newTextarea {
   position: absolute;
   top: 0;
   left: 0;
@@ -135,42 +134,35 @@ main .month__container {
   height: 10rem;
   resize: none;
 }
-
-.form__textArea {
+.forms__wrapper .form__textArea {
   width: 50rem;
   height: 15rem;
   padding: 1.5rem;
   border: 0.2rem solid #28c0c3;
   resize: none;
 }
-
-.form__date {
+.forms__wrapper .form__date {
   font-size: 4rem;
 }
-
-.form__title {
+.forms__wrapper .form__title {
   font-size: 2rem;
   padding: 2rem;
   font-family: "Open Sans", sans-serif;
 }
-
-.form__buttons {
+.forms__wrapper .form__buttons {
   padding: 3rem;
 }
-
-.saveButton {
+.forms__wrapper .form__buttons .saveButton {
   height: 3rem;
   width: 15rem;
+  border: 0.2rem solid #28c0c3;
+  background: white;
 }
-
-.addButton {
+.forms__wrapper .form__buttons .returnButton {
   height: 3rem;
   width: 15rem;
-}
-
-.returnButton {
-  height: 3rem;
-  width: 15rem;
+  border: 0.2rem solid #28c0c3;
+  background: white;
 }
 
 /*# sourceMappingURL=style.css.map */

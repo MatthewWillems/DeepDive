@@ -9,11 +9,19 @@ main {
     padding: 1rem;
   }
 
-  .month:hover {
-    transition: cubic-bezier(0.215, 0.610, 0.355, 1);
-    background: radial-gradient(circle farthest-corner at 10% 20%, rgb(0, 152, 155) 0.1%, rgb(153, 187, 196) 94.2%);
-    color: white;
-    transition-duration: 0.2s;
+  .month {
+    padding: 1.3rem;
+    font-size: 2rem;
+    font-family: 'Open Sans', sans-serif;
+    border-bottom: 0.1rem solid rgba(128, 128, 128, 0.286);
+    color: #1E1E1E;
+
+    &:hover {
+      transition: cubic-bezier(0.215, 0.610, 0.355, 1);
+      background: radial-gradient(circle farthest-corner at 10% 20%, rgb(0, 152, 155) 0.1%, rgb(153, 187, 196) 94.2%);
+      color: white;
+      transition-duration: 0.2s;
+    }
   }
 
   .calendar {
@@ -24,26 +32,18 @@ main {
     padding: 4rem;
     margin: auto;
     box-shadow: rgba(0, 0, 0, 0.19) 0rem 0.1rem 0.2rem, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+
+    .month__container {
+      @include mixins.flexCenter;
+      margin-bottom: 1rem;
+      flex-direction: column;
+    }
   }
 
-  .month__container {
-    @include mixins.flexCenter;
-    margin-bottom: 1rem;
-    flex-direction: column;
+  .month__h2 {
+    font-size: 2rem;
+    font-family: 'Open Sans', sans-serif;
+    padding: 1.8rem;
+    color: white;
   }
-}
-
-.month {
-  padding: 1.3rem;
-  font-size: 2rem;
-  font-family: 'Open Sans', sans-serif;
-  border-bottom: 0.1rem solid rgba(128, 128, 128, 0.286);
-  color: #1E1E1E;
-}
-
-.month__h2 {
-  font-size: 2rem;
-  font-family: 'Open Sans', sans-serif;
-  padding: 1.8rem;
-  color: white;
 }

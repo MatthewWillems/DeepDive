@@ -1,0 +1,53 @@
+.forms__wrapper {
+  position: relative;
+  text-align: center;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .newTextarea {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10rem;
+    resize: none;
+  }
+
+  .form__textArea {
+    width: 50rem;
+    height: 15rem;
+    padding: 1.5rem;
+    border: 0.2rem solid #28c0c3;
+    resize: none;
+  }
+
+  .form__date {
+    font-size: 4rem;
+  }
+
+  .form__title {
+    font-size: 2rem;
+    padding: 2rem;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  .form__buttons {
+    padding: 3rem;
+
+    .saveButton {
+      height: 3rem;
+      width: 15rem;
+      border: 0.2rem solid #28c0c3;
+      background: white;
+    }
+
+    .returnButton{
+      height: 3rem;
+      width: 15rem;
+      border: 0.2rem solid #28c0c3;
+      background: white;
+    }
+  }
+}

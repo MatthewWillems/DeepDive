@@ -2,9 +2,11 @@
 @use "./abstracts/colors";
 @use "./abstracts/mediaqueries";
 @use "./abstracts/reset";
+@use "./abstracts/mixins";
 @use "./base.scss";
 
 // Components
 @use "./components/header/header.scss";
 @use "./components/months/months.scss";
 @use "./components/days/days.scss";
+@use "./components/form/form.scss";

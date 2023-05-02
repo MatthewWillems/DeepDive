@@ -15,11 +15,11 @@
 
 <body>
     <header class="header">
-        <img src="/img/doesburgLogo.png" alt="Logo">
+        <img class="header__logo" src="/img/doesburgLogo.png" alt="Logo">
         <h1 class="header__title">Succes Dagboek</h1>
     </header>
     <main>
-        <nav>
+        <nav class="months__wrapper">
             <ul class="months">
                 <li class="month" data-month="0">January</li>
                 <li class="month" data-month="1">February</li>
@@ -35,9 +35,19 @@
                 <li class="month" data-month="11">December</li>
             </ul>
         </nav>
-        <div class="calendar">
+        <section class="calendar">
             <div class="days"></div>
-        </div>
+        </section>
+
+        <section class="forms__wrapper">
+            <h2 class="form__date">8 2023</h2>
+            <p class="form__title">Welke successen heb je vandaag allemaal bereikt?</p>
+            <textarea class="form__textArea"></textarea>
+            <div class="form__buttons">
+                <button class="saveButton">Save</button>
+                <button class="returnButton">Terug</button>
+            </div>
+        </section>
     </main>
 </body>
 

@@ -6,12 +6,12 @@ header {
     background: white;
     box-shadow: rgba(0, 0, 0, 0.1) 0rem 0.4rem 0.6rem -0.1rem, rgba(0, 0, 0, 0.06) 0rem 0.2rem 0.4rem -0.1rem;
 
-    img{
+    .header__logo{
         width: 10rem;
         height: 7rem;
     }
 
-    h1{
+    .header__title{
         margin-left: 3rem;
         font-family: 'Lobster', cursive;
         font-size: 3rem;

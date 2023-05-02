@@ -1,31 +1,29 @@
+@use "../../abstracts/mixins";
+
 .days {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 100%;
-    gap: 2.5rem;
-  }
-  
+  @include mixins.flexCenter;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 2.5rem;
+
   .day {
     width: 6rem;
     height: 6rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include mixins.flexCenter;
     margin: 0.5rem;
     border-radius: 50%;
     font-family: 'Open Sans', sans-serif;
     font-size: 1.8rem;
     border: 0.2rem solid white;
     color: white;
-  }
 
-  .day:hover{
-    cursor: pointer;
-    background: #ffffff;
-    color: #000000;
-    transition: cubic-bezier(0.215, 0.610, 0.355, 1);
-    transition-duration: 0.2s;
-    border: none;
+    &.day:hover {
+      cursor: pointer;
+      background: #ffffff;
+      color: #000000;
+      transition: cubic-bezier(0.215, 0.610, 0.355, 1);
+      transition-duration: 0.2s;
+      border: none;
+    }
   }
+}

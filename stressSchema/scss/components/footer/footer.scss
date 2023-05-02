@@ -1,7 +1,11 @@
 .footer{
-    display: none;
-    &__Area{
-        height: 100vh;
+    
+    font-family: sans-serif;
+  color: #2DB7B3;
+ 
+
+    &__section{
+        height: 80vh;
         width: 100%;
         display: flex;
         align-items: center;
@@ -9,6 +13,7 @@
         flex-direction: column;
         vertical-align: top;
 
+     
     }
 
     &__text{
@@ -16,12 +21,44 @@
         color: #2DB7B3;
     }
 
+    &__ButtonSave{
+      
+        height: 5rem;
+        width: 10rem;
+    }
+
+    &__Buttons{
+        height: 5vh;
+        padding: 5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4rem;
+    }
+
+    &__ButtonSave{
+        height: 5rem;
+        width: 20rem;
+        border: none;
+        border-radius: 1rem;
+        background: #2DB7B3;
+
+        &:hover{
+            cursor: pointer;
+            transform: scale(1.1);
+            transition: 0.2s all;
+            color: white;
+        }
+
+    }
 }
 
 .input{
   height: 15rem;
   width: 80%;
   background: red;
+  font-family: sans-serif;
+  color: #2DB7B3;
   
 
     &__textarea{
@@ -29,7 +66,12 @@
         height: 100%;
         padding: 2rem;
         text-align: center;
-        border: 0.2rem solid #2DB7B3;;
+        border: 0.2rem solid #2DB7B3;
+      
+
 
     }
 }
+
+
+

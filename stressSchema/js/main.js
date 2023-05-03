@@ -1,40 +1,5 @@
-// class Card {
-//   constructor(element, footer) {
-//     this.element = element;
-//     this.footer = footer;
-//     this.addClickListener();
-//   }
 
-//   addClickListener() {
-//     this.element.addEventListener('click', () => {
-//       this.footer.style.display = 'inline';
-//     });
-//   }
-// }
-
-// const cards = document.querySelectorAll("#js--cards");
-
-// cards.forEach(card => {
-//   card.addEventListener("click", () => {
-//     // Hide all other cards
-//     cards.forEach(otherCard => {
-//       if (otherCard !== card) {
-//         otherCard.style.display = "none";
-       
-
-
-//       }
-//     });
-//     const main = document.getElementById('js--main');
-//     main.style.gap = '0';
-
-//     // Show the footer
-//     const footer = document.getElementById("js--footer");
-//     footer.style.display = "inline";
-//   });
-// });
-
-class Header{
+class Header {
   headerElement;
   headerFigureElement;
   headerImgElement;
@@ -64,44 +29,59 @@ class Header{
     this.headerElement.appendChild(this.headerFigureElement);
     this.headerFigureElement.appendChild(this.headerImgElement);
     this.headerElement.appendChild(this.headerTitle);
-    
+
   }
-  
+
 }
 
 class StressMain {
   placeToRenderMain;
+  footer;
 
-  constructor(placeToRenderMain) {
+  constructor(placeToRenderMain, footer) {
+    this.footer = footer;
     this.placeToRenderMain = document.getElementsByTagName(placeToRenderMain)[0];
 
     this.mainElement = document.createElement("main");
     this.mainElement.classList = "main";
 
-   
 
-    // Create an instance of the cards class for each card
+
     this.cardsData = [
       { text: "Goed", color: "groen" },
       { text: "twijfel", color: "geel" },
       { text: "twijfel", color: "oranje" },
       { text: "slecht", color: "rood" }
     ];
+  
     for (let i = 0; i < this.cardsData.length; i++) {
-      this.card = new Card(this.cardsData[i].text, this.cardsData[i].color);
+      this.card = new Card(
+        this.cardsData[i].text,
+        this.cardsData[i].color,
+        this.footer,
+        this.mainElement
+      );
+      
       this.mainElement.appendChild(this.card.render());
     }
-
-
+    
   }
 
   render() {
     this.placeToRenderMain.appendChild(this.mainElement);
   }
+
+  
 }
 
+
 class Card {
-  constructor(text, color) {
+  footer;
+  constructor(text, color, footer, mainElement) {
+    this.mainElement = mainElement;
+    
+    this.footerElement = footer;
+
     this.linkElement = document.createElement("a");
     this.linkElement.classList = "Scroll__Link";
     this.linkElement.href = "#js--footer";
@@ -123,15 +103,51 @@ class Card {
     this.sectionElement.appendChild(this.textElement);
     this.sectionElement.appendChild(this.cardElement);
     this.linkElement.appendChild(this.sectionElement);
+
+
+    this.addClickListener();
+
+   
   }
+
+  
+  addClickListener() {
+    this.sectionElement.addEventListener("click", () => {
+      this.footer = document.querySelector(".footer");
+      this.footer.style.display = "inline";
+      this.footer.scrollIntoView({ behavior: 'smooth' });
+    });
+    this.sectionElement.addEventListener("click", (event) => {
+      const cards = document.querySelectorAll(".cards");
+      cards.forEach((card) => {
+  
+        // Hide all cards except the clicked card
+        if (card !== this.sectionElement) {
+          card.style.display = "none";
+          this.mainElement.style.gap = "0";
+   
+        }
+       
+        
+      });
+     
+    });
+    
+  }
+  
+
+  
+
 
   render() {
     return this.linkElement;
   }
+
 }
 
 
-class Footer{
+class Footer {
+  footerElement;
 
   constructor(placeToRenderFooter) {
 
@@ -145,13 +161,24 @@ class Footer{
 
     this.sectionFooterElement1Text = document.createElement("h3");
     this.sectionFooterElement1Text.classList = "footer__text";
-    this.sectionFooterElement1Text.innerText = "Tell us about your experience";
+    this.sectionFooterElement1Text.innerText = "Signalen/gewaarwordingen";
 
     this.inputElement = document.createElement("form");
     this.inputElement.classList = "input";
 
     this.inputTextAreaElement = document.createElement("textarea");
     this.inputTextAreaElement.classList = "input__textarea";
+
+
+    this.sectionFooterElement2Text = document.createElement("h3");
+    this.sectionFooterElement2Text.classList = "footer__text";
+    this.sectionFooterElement2Text.innerText = "Acties/maatregelen";
+
+    this.inputElement2 = document.createElement("form");
+    this.inputElement2.classList = "input";
+
+    this.inputTextAreaElement2 = document.createElement("textarea");
+    this.inputTextAreaElement2.classList = "input__textarea";
 
     this.sectionFooterElement2 = document.createElement("section");
     this.sectionFooterElement2.classList = "footer__Buttons";
@@ -167,10 +194,17 @@ class Footer{
     this.sectionButtonSave.classList = "footer__ButtonSave";
     this.sectionButtonSave.innerText = "Save";
 
-    this.sectionButtonSaveIElement = document.createElement("i");
-    this.sectionButtonSaveIElement.classList = "fa-solid fa-download";
 
-  
+    this.sectionButtonSaveIElement = document.createElement("i");
+    this.sectionButtonSaveIElement.classList = "fa-regular fa-floppy-disk";
+
+
+    this.sectionButtonDownload = document.createElement("button")
+    this.sectionButtonDownload.classList = "footer__ButtonSave"
+    this.sectionButtonDownload.innerText = "Download";
+
+    this.sectionButtonDownloadIElement = document.createElement("i");
+    this.sectionButtonDownloadIElement.classList = "  fa-solid fa-download";
   }
 
   render() {
@@ -178,34 +212,30 @@ class Footer{
 
     this.footerElement.appendChild(this.sectionFooterElement1);
     this.sectionFooterElement1.appendChild(this.sectionFooterElement1Text);
-   
-
-    this.inputElement.appendChild(this.inputTextAreaElement);
     this.sectionFooterElement1.appendChild(this.inputElement);
+    this.inputElement.appendChild(this.inputTextAreaElement);
+
+
+    this.sectionFooterElement1.appendChild(this.sectionFooterElement2Text);
+    this.sectionFooterElement1.appendChild(this.inputElement2);
+    this.inputElement2.appendChild(this.inputTextAreaElement2);
+
 
     this.footerElement.appendChild(this.sectionFooterElement2);
-
     this.sectionFooterElement2.appendChild(this.sectionButtonReset);
     this.sectionButtonReset.appendChild(this.sectionButtonrResetIElement);
 
+    this.footerElement.appendChild(this.sectionFooterElement2);
     this.sectionFooterElement2.appendChild(this.sectionButtonSave);
-   
     this.sectionButtonSave.appendChild(this.sectionButtonSaveIElement);
+
+    this.footerElement.appendChild(this.sectionFooterElement2);
+    this.sectionFooterElement2.appendChild(this.sectionButtonDownload);
+    this.sectionButtonDownload.appendChild(this.sectionButtonDownloadIElement);
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-class App{
+class App {
 
   header;
   main;
@@ -214,11 +244,11 @@ class App{
     this.header = new Header("body");
     this.main = new StressMain("body");
     this.footer = new Footer("body");
-    
+
     this.header.render();
     this.main.render();
     this.footer.render();
-    
+
   }
 }
 const app = new App();

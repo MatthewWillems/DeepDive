@@ -106,6 +106,7 @@ html {
 }
 
 .footer {
+  display: none;
   font-family: sans-serif;
   color: #2DB7B3;
 }

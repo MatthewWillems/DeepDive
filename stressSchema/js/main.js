@@ -77,6 +77,8 @@ class StressMain {
 
 class Card {
   footer;
+  isClicked = false;
+
   constructor(text, color, footer, mainElement) {
     this.mainElement = mainElement;
     
@@ -105,7 +107,8 @@ class Card {
     this.linkElement.appendChild(this.sectionElement);
 
 
-    this.addClickListener();
+    this.addClickListener(); 
+    this.ClickListener();
 
    
   }
@@ -127,12 +130,20 @@ class Card {
           this.mainElement.style.gap = "0";
    
         }
-       
-        
       });
-     
     });
     
+  }
+
+  ClickListener() {
+    this.sectionElement.addEventListener("click", () => {
+      // Set isClicked to true when the card is clicked
+      this.isClicked = true;
+
+      this.footer = document.querySelector(".footer");
+      this.footer.style.display = "inline";
+      this.footer.scrollIntoView({ behavior: 'smooth' });
+    });
   }
   
 
@@ -168,7 +179,7 @@ class Footer {
 
     this.inputTextAreaElement = document.createElement("textarea");
     this.inputTextAreaElement.classList = "input__textarea";
-
+    
 
     this.sectionFooterElement2Text = document.createElement("h3");
     this.sectionFooterElement2Text.classList = "footer__text";
@@ -179,6 +190,7 @@ class Footer {
 
     this.inputTextAreaElement2 = document.createElement("textarea");
     this.inputTextAreaElement2.classList = "input__textarea";
+
 
     this.sectionFooterElement2 = document.createElement("section");
     this.sectionFooterElement2.classList = "footer__Buttons";
@@ -193,6 +205,7 @@ class Footer {
     this.sectionButtonSave = document.createElement("button");
     this.sectionButtonSave.classList = "footer__ButtonSave";
     this.sectionButtonSave.innerText = "Save";
+    
 
 
     this.sectionButtonSaveIElement = document.createElement("i");
@@ -205,9 +218,59 @@ class Footer {
 
     this.sectionButtonDownloadIElement = document.createElement("i");
     this.sectionButtonDownloadIElement.classList = "  fa-solid fa-download";
+
+
+  //   this.savedText = localStorage.getItem('inputText');
+  //   if (this.savedText) {
+  //     this.inputTextAreaElement.value = this.savedText;
+      
+  //   }
+
+  //   // Add an event listener to the textarea to save the input text to local storage
+  //   this.inputTextAreaElement.addEventListener('input', (event) => {
+  //     this.inputText = event.target.value;
+  //     localStorage.setItem('inputText', this.inputText);
+     
+  //   });
+
+  // this.inputTextAreaElement2.addEventListener("input", (event) => {
+  //     const inputValue = event.target.value;
+  //     localStorage.setItem("inputText", inputValue);
+  //   });
+
+    const savedText1 = localStorage.getItem('inputText');
+    const savedText2 = localStorage.getItem('inputText2');
+
+  // If there is saved text, set the text of the textareas to the saved text
+  if (savedText1) {
+    this.inputTextAreaElement.value = savedText1;
+  }
+  
+  if (savedText2) {
+    this.inputTextAreaElement2.value = savedText2;
+  }
+
+  // Add an event listener to the save button to save the input text to local storage
+  this.sectionButtonSave.addEventListener('click', (event) => {
+    event.preventDefault();
+    const inputText1 = this.inputTextAreaElement.value;
+    const inputText2 = this.inputTextAreaElement2.value;
+    localStorage.setItem('inputText1', inputText1);
+    localStorage.setItem('inputText2', inputText2);
+  });
+
+    this.sectionButtonReset.addEventListener('click', (event) => {
+      localStorage.clear();
+      // Reset text areas
+      this.inputTextAreaElement.value = "";
+      this.inputTextAreaElement2.value = "";
+    });
+
+    
   }
 
   render() {
+
     this.placeToRenderFooter.appendChild(this.footerElement)
 
     this.footerElement.appendChild(this.sectionFooterElement1);
@@ -252,4 +315,3 @@ class App {
   }
 }
 const app = new App();
-

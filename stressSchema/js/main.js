@@ -124,7 +124,6 @@ class Card {
       const cards = document.querySelectorAll(".cards");
       cards.forEach((card) => {
   
-        // Hide all cards except the clicked card
         if (card !== this.sectionElement) {
           card.style.display = "none";
           this.mainElement.style.gap = "0";
@@ -137,7 +136,7 @@ class Card {
 
   ClickListener() {
     this.sectionElement.addEventListener("click", () => {
-      // Set isClicked to true when the card is clicked
+    
       this.isClicked = true;
 
       this.footer = document.querySelector(".footer");
@@ -219,54 +218,49 @@ class Footer {
     this.sectionButtonDownloadIElement = document.createElement("i");
     this.sectionButtonDownloadIElement.classList = "  fa-solid fa-download";
 
+    this.savedText1 = localStorage.getItem('inputText1');
+    this.savedText2 = localStorage.getItem('inputText2');
 
-  //   this.savedText = localStorage.getItem('inputText');
-  //   if (this.savedText) {
-  //     this.inputTextAreaElement.value = this.savedText;
-      
-  //   }
+ 
+ if ( this.savedText1) {
+  this.inputTextAreaElement.value =  this.savedText1;
+}
 
-  //   // Add an event listener to the textarea to save the input text to local storage
-  //   this.inputTextAreaElement.addEventListener('input', (event) => {
-  //     this.inputText = event.target.value;
-  //     localStorage.setItem('inputText', this.inputText);
-     
-  //   });
+if ( this.savedText2) {
+  this.inputTextAreaElement2.value =  this.savedText2;
+}
 
-  // this.inputTextAreaElement2.addEventListener("input", (event) => {
-  //     const inputValue = event.target.value;
-  //     localStorage.setItem("inputText", inputValue);
-  //   });
-
-    const savedText1 = localStorage.getItem('inputText');
-    const savedText2 = localStorage.getItem('inputText2');
-
-  // If there is saved text, set the text of the textareas to the saved text
-  if (savedText1) {
-    this.inputTextAreaElement.value = savedText1;
-  }
-  
-  if (savedText2) {
-    this.inputTextAreaElement2.value = savedText2;
-  }
-
-  // Add an event listener to the save button to save the input text to local storage
   this.sectionButtonSave.addEventListener('click', (event) => {
     event.preventDefault();
-    const inputText1 = this.inputTextAreaElement.value;
-    const inputText2 = this.inputTextAreaElement2.value;
-    localStorage.setItem('inputText1', inputText1);
-    localStorage.setItem('inputText2', inputText2);
+    this.inputText1 = this.inputTextAreaElement.value;
+    this.inputText2 = this.inputTextAreaElement2.value;
+    localStorage.setItem('inputText1',  this.inputText1);
+    localStorage.setItem('inputText2',  this.inputText2);
   });
 
     this.sectionButtonReset.addEventListener('click', (event) => {
       localStorage.clear();
-      // Reset text areas
+  
       this.inputTextAreaElement.value = "";
       this.inputTextAreaElement2.value = "";
     });
 
+
+    this.sectionButtonDownload.addEventListener("click", () => {
+      setTimeout(() => {
+        html2canvas(document.body).then(function(canvas) {
+          canvas.toBlob(function(blob) {
+            saveAs(blob, "screenshot.png");
+          });
+        });
+      });
+    });
+    html2canvas(document.body).then(function(canvas) {
+      document.body.appendChild(canvas);
+    });
     
+ 
+        
   }
 
   render() {
@@ -295,6 +289,9 @@ class Footer {
     this.footerElement.appendChild(this.sectionFooterElement2);
     this.sectionFooterElement2.appendChild(this.sectionButtonDownload);
     this.sectionButtonDownload.appendChild(this.sectionButtonDownloadIElement);
+    this.footerElement.scrollIntoView({ behavior: 'smooth' });
+    
+
   }
 }
 

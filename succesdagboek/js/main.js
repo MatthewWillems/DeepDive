@@ -1,3 +1,78 @@
+class Header {
+  headerElement;
+  logoElement;
+  titleElement;
+
+  constructor(logoSrc, title) {
+    this.logoSrc = logoSrc;
+    this.title = title;
+  }
+
+  render() {
+    const headerElement = document.createElement('header');
+
+    const logoElement = document.createElement('img');
+    logoElement.className = 'header__logo';
+    logoElement.src = this.logoSrc;
+    logoElement.alt = 'Logo';
+    headerElement.appendChild(logoElement);
+
+    const titleElement = document.createElement('h1');
+    titleElement.className = 'header__title';
+    titleElement.textContent = this.title;
+    headerElement.appendChild(titleElement);
+
+    return headerElement;
+  }
+}
+
+class Months {
+  constructor() {
+    this.months = [
+      { name: 'January', value: 0 },
+      { name: 'February', value: 1 },
+      { name: 'March', value: 2 },
+      { name: 'April', value: 3 },
+      { name: 'May', value: 4 },
+      { name: 'June', value: 5 },
+      { name: 'July', value: 6 },
+      { name: 'August', value: 7 },
+      { name: 'September', value: 8 },
+      { name: 'October', value: 9 },
+      { name: 'November', value: 10 },
+      { name: 'December', value: 11 },
+    ];
+  }
+
+  render() {
+    const navElement = document.createElement('nav');
+    navElement.className = 'months__wrapper';
+
+    const ulElement = document.createElement('ul');
+    ulElement.className = 'months';
+    navElement.appendChild(ulElement);
+
+    this.months.forEach((month) => {
+      const liElement = document.createElement('li');
+      liElement.className = 'month';
+      liElement.dataset.month = month.value;
+      liElement.textContent = month.name;
+      ulElement.appendChild(liElement);
+    });
+
+    return navElement;
+  }
+}
+
+
+/////////
+
+const header = new Header('/img/doesburgLogo.png', 'Succes Dagboek');
+document.body.appendChild(header.render());
+
+/////
+
+
 class Calendar {
   constructor(monthsSelector, calendarSelector) {
     this.months = document.querySelectorAll(monthsSelector);

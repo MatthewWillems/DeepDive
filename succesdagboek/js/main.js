@@ -67,8 +67,7 @@ class Months {
 
 /////////
 
-const header = new Header('/img/doesburgLogo.png', 'Succes Dagboek');
-document.body.appendChild(header.render());
+
 
 /////
 
@@ -177,3 +176,6 @@ class Calendar {
 
 const calendar = new Calendar(".month", ".calendar");
 calendar.init();
+
+// const header = new Header('/img/doesburgLogo.png', 'Succes Dagboek');
+// document.body.appendChild(header.render());

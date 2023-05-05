@@ -7,6 +7,7 @@ class Header {
 
   constructor(placeToRenderHeader) {
     this.placeToRenderHeader = document.getElementsByTagName(placeToRenderHeader)[0];
+    
 
     this.headerElement = document.createElement("header");
     this.headerElement.classList = "header";
@@ -16,7 +17,8 @@ class Header {
 
     this.headerImgElement = document.createElement("img");
     this.headerImgElement.classList = "header__doesburg";
-    this.headerImgElement.src = "./img/doesburg.png";
+    this.headerImgElement.src = "./img/doesburg.webp";
+    this.headerImgElement.alt = "image van doesburg coaching";
 
     this.headerTitle = document.createElement("h1");
     this.headerTitle.classList = "header__text"
@@ -44,6 +46,7 @@ class StressMain {
 
     this.mainElement = document.createElement("main");
     this.mainElement.classList = "main";
+
 
 
 
@@ -136,26 +139,17 @@ class Card {
 
   ClickListener() {
     this.sectionElement.addEventListener("click", () => {
-    
       this.isClicked = true;
-
       this.footer = document.querySelector(".footer");
       this.footer.style.display = "inline";
       this.footer.scrollIntoView({ behavior: 'smooth' });
     });
   }
-  
-
-  
-
-
   render() {
     return this.linkElement;
   }
 
 }
-
-
 class Footer {
   footerElement;
 
@@ -255,12 +249,12 @@ if ( this.savedText2) {
         });
       });
     });
-    html2canvas(document.body).then(function(canvas) {
+    html2canvas(document.body).then(function (canvas) {
+      canvas.style.width = "100%";
       document.body.appendChild(canvas);
     });
     
- 
-        
+  
   }
 
   render() {
@@ -291,7 +285,6 @@ if ( this.savedText2) {
     this.sectionButtonDownload.appendChild(this.sectionButtonDownloadIElement);
     this.footerElement.scrollIntoView({ behavior: 'smooth' });
     
-
   }
 }
 
@@ -308,7 +301,6 @@ class App {
     this.header.render();
     this.main.render();
     this.footer.render();
-
   }
 }
 const app = new App();

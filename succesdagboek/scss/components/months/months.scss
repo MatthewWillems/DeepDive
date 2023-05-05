@@ -1,4 +1,5 @@
 @use "../../abstracts/mixins";
+@use "../../abstracts/colors";
 
 main {
   display: flex;
@@ -14,12 +15,12 @@ main {
     font-size: 2rem;
     font-family: 'Open Sans', sans-serif;
     border-bottom: 0.1rem solid rgba(128, 128, 128, 0.286);
-    color: #1E1E1E;
+    color: map-get(colors.$baseColors, "blackColor");
 
     &:hover {
       transition: cubic-bezier(0.215, 0.610, 0.355, 1);
       background: radial-gradient(circle farthest-corner at 10% 20%, rgb(0, 152, 155) 0.1%, rgb(153, 187, 196) 94.2%);
-      color: white;
+      color: map-get(colors.$baseColors, "whiteColor");
       transition-duration: 0.2s;
     }
   }
@@ -44,6 +45,6 @@ main {
     font-size: 2rem;
     font-family: 'Open Sans', sans-serif;
     padding: 1.8rem;
-    color: white;
+    color: map-get(colors.$baseColors, "whiteColor");
   }
 }

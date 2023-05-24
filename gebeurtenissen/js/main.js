@@ -4,7 +4,7 @@ class Header {
     headerTitleElement;
     placeToRenderHeader;
 
-    constructor(placeToRenderHeader){
+    constructor(placeToRenderHeader) {
         this.placeToRenderHeader = document.getElementsByTagName(placeToRenderHeader)[0];
         this.headerElement = document.createElement("header");
         this.headerElement.classList = "header";
@@ -24,47 +24,87 @@ class Header {
     }
 }
 
-const x = new Header("body");
-x.render();
 
 class EventCard {
-    name = "";
+    // name = "";
     htmlElement = undefined;
-    gebeurtenis;
 
-    constructor(newName, newHTMLElement, gebeurtenis) {
-        this.name = newName;
+    constructor(placeToRenderEventCard,gebeurtenis) {
+        // this.name = newName;
         this.gebeurtenis = gebeurtenis;
-        this.htmlElement = newHTMLElement;
-        this.htmlElement.onclick = this.onEventCardButtonClicked;
+
+        //
+
+        this.placeToRenderEventCard = document.getElementsByTagName(placeToRenderEventCard)[0];
+        this.mainElement = document.createElement("main");
+
+        this.articleElement = document.createElement("article");
+        this.articleElement.classList = "addEventCard";
+        this.articleElement.id = "js--addEventCard";
+        this.articleElement.onclick = this.onEventCardButtonClicked;
+
+
+        this.buttonElement = document.createElement("button");
+        this.buttonElement.classList = "addEventCard__button";
+        this.buttonElement.innerText = "+";
+    }
+
+    render() {
+        this.placeToRenderEventCard.appendChild(this.mainElement);
+        this.mainElement.appendChild(this.articleElement);
+        this.articleElement.appendChild(this.buttonElement);
     }
 
     onEventCardButtonClicked = () => {
-        console.log("geklikt");
-        this.htmlElement.style.display = "none";
-        this.htmlElement.classList.add("eventCard--gebeurtenis");
-        this.gebeurtenis.show();
+        this.gebeurtenis.render();
+      //
     }
 
 }
 
+class EventGebeurtenis{
+    htmlElement = undefined;
+    constructor(){
+        this.htmlElement = document.createElement("article");
 
-class EventCardGebeurtenis {
-    htmlElement;
-    constructor(htmlElement){
-        this.htmlElement = htmlElement;
-        this.htmlElement.style.display = "none";
+        this.articleElement = document.createElement("article");
+        this.articleElement.classList = "zeventCard__gebeurtenis";
+        this.articleElement.innerText = "Wat is er gebeurd?";
+
+        this.inputElement = document.createElement("input");
+        this.inputElement.type = "text";
+        this.inputElement.id = "event";
+        this.inputElement.name = "event";
+
+
+        this.buttonElement = document.createElement("button");
+        this.buttonElement.classList = "nextPage__button";
+        this.buttonElement.innerText = "Volgende";
+        this.inputElement.id = "js--addEventCard";
+
     }
 
-    show(){
-        this.htmlElement.style.display = "flex";
-    }
+    render(){
+        this.articleElement.appendChild(this.inputElement);
+        document.querySelector("body").appendChild(this.articleElement);
 
+    }
 }
 
+/* <article class="eventCard--gebeurtenis">
+            <h1>Wat is er gebeurd?</h1>
+            <input type="text" id="event" name="event"><br><br>
+            <button class="addEventCard__button--volgende" id="js--addEventCard">Volgende</button>
+        </article> */
 
-const eventCG = new EventCardGebeurtenis(document.getElementsByClassName("eventCard--gebeurtenis")[0]);
-const eventCard = new EventCard("newEventCard", document.getElementById("js--addEventCard"),eventCG);
+const x = new Header("body");
+x.render();
+const eventGebeurtenis = new EventGebeurtenis();
+const eventCard = new EventCard("body",eventGebeurtenis);
+eventCard.render();
+
+
+// const eventCard = new EventCard("newEventCard", eventCG);
 
 // < body >
 //    <header class="header">

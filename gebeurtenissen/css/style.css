@@ -80,7 +80,7 @@ main{
   color: whitesmoke;
 }
 
-.eventCard--gebeurtenis{
+.eventCard__gebeurtenis{
   display: flex;
   border: 0.6rem solid red;
   color: rgb(0, 0, 0);
@@ -88,7 +88,7 @@ main{
   justify-content: center;
 }
 
-.addEventCard__button--volgende {
+.nextPage__button{
   border-radius: 50%;
   border: none;
   align-items: center;

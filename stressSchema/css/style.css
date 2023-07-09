@@ -27,7 +27,6 @@ html {
   transition: 0.2s;
   text-decoration: none;
   color: black;
-  display: flex;
 }
 
 .cards {
@@ -166,8 +165,7 @@ html {
 
 @media screen and (max-width: 62.5rem) {
   .main {
-    display: block;
-    padding-top: 1rem;
+    height: 100vh;
   }
   .cards {
     display: flex;
@@ -177,10 +175,44 @@ html {
     margin-top: 1rem;
   }
   .cards__card {
-    height: 10rem;
+    height: 15rem;
     aspect-ratio: 1/1;
   }
   .cards__circle {
+    height: 8rem;
+    aspect-ratio: 1/1;
+  }
+  .footer__section {
+    height: 70vh;
+  }
+}
+@media screen and (max-width: 50rem) {
+  .main {
+    gap: 1rem;
+    height: 100vh;
+  }
+}
+@media screen and (max-width: 39rem) {
+  .main {
+    height: 130vh;
+    gap: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .main .cards {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 1rem;
+  }
+  .main .cards__card {
+    height: 10rem;
+    aspect-ratio: 1/1;
+  }
+  .main .cards__circle {
     height: 5rem;
     aspect-ratio: 1/1;
   }
